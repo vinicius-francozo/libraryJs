@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../stylesheets/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>Biblioteca PedBot</title>
+</head>
+<body class="overflow-x-hidden m-0">
+    <nav class="navbar bg-dark navbar-expand-lg " data-bs-theme="dark">
+        <div class="container">
+          <a class="navbar-brand text-white" href="#">PedLivro</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav mx-auto">
+              <a class="nav-link text-white active" aria-current="page" href="./index.html">Home</a>
+              <a class="nav-link text-white" href="./listBook.html">Livros</a>
+              <a class="nav-link text-white" href="./listAuthor.html">Autores</a>
+            </div>
+            <a class="nav-link ml-auto text-secondary disabled" aria-disabled="true">Login</a>
+          </div>
+        </div>
+      </nav>
+    <div class="carousel-container">
+        <div id="carouselExampleIndicators" class="carousel slide">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="../images/matt-ridley-H-LIL57PHCc-unsplash.jpg" class="d-block w-100"  alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="../images/morgan-housel-aZ_MmSmAcjg-unsplash.jpg" class="d-block w-100"  alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+    </div>
+    <div class="container mt-5">
+      <div class="books">
+        <p class="fs-2 text-uppercase mb-1">Livros</p>
+        <a class="link-secondary" href="listBook.html"><small class="text-uppercase">ver todos</small></a>
+        <div class="best-sellers">
+          <div class="row">
+            <div class="col-md-6 col-xl-3 col-12">
+              <div class="card mx-auto mb-3" style="width: 18rem;">
+                <img src="../images/attachment_122242026.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">2-Week turnaround</h5>
+                  <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, expedita..</p>
+                  <a href="#" class="btn btn-primary disabled">Alugar</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3 col-12 ">
+              <div class="card mx-auto mb-3" style="width: 18rem;">
+                <img src="../images/attachment_101155833.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Zeitreisen sind verboten</h5>
+                  <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, expedita..</p>
+                  <a href="#" class="btn btn-primary disabled">Alugar</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3 col-12 ">
+              <div class="card mx-auto mb-3" style="width: 18rem;">
+                <img src="../images/attachment_121061160.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">It's not common cents</h5>
+                  <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, expedita..</p>
+                  <a href="#" class="btn btn-primary disabled">Alugar</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3 col-12  d-none d-sm-inline">
+              <div class="card mx-auto mb-3" style="width: 18rem;">
+                <img src="../images/attachment_121803961.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Mind control</h5>
+                  <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, expedita..</p>
+                  <a href="#" class="btn btn-primary disabled">Alugar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="authors">
+        <p class="fs-2 text-uppercase mb-1">Autores</p>
+        <a class="link-secondary" href="listAuthor.html"><small class="text-uppercase">ver todos</small></a>
+        <div class="best-sellers">
+          <div class="row">
+            <div class="col-md-6 col-xl-3 col-12">
+              <div class="card mx-auto mb-3" style="width: 18rem;">
+                <img src="https://source.unsplash.com/random/268x268/?person,portrait,face" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Bailey Harper</h5>
+                  <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, expedita..</p>
+                  <a href="#" class="btn btn-primary disabled">Ver mais</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3 col-12 ">
+              <div class="card mx-auto mb-3" style="width: 18rem;">
+                <img src="https://source.unsplash.com/random/268x268/?person2,portrait,face" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Cameron Smith</h5>
+                  <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, expedita..</p>
+                  <a href="#" class="btn btn-primary disabled">Ver mais</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3 col-12 ">
+              <div class="card mx-auto mb-3" style="width: 18rem;">
+                <img src="https://source.unsplash.com/random/268x268/?personn,portrait,face" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Casey Jones</h5>
+                  <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, expedita..</p>
+                  <a href="#" class="btn btn-primary disabled">Ver mais</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3 col-12  d-none d-sm-inline">
+              <div class="card mx-auto mb-3" style="width: 18rem;">
+                <img src="https://source.unsplash.com/random/268x268/?person4,portrait,face" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Charlie Davies</h5>
+                  <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, expedita..</p>
+                  <a href="#" class="btn btn-primary disabled">Ver mais</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="bg-dark">
+        <div class="footer-items row text-center justify-content-center pt-5 mb-3">
+          <div class="col-xl-4 col-12 row 1">
+            <p class="fs-2 text-white text-uppercase mb-1">Atendimento</p>
+            <a class="link-secondary" href="">Política de vendas, Trocas e Privacidade</a>
+            <a class="link-secondary" href="">Termos e condições de compra</a>
+            <a class="link-secondary" href="">Fale conosco</a>
+          </div>
+          <div class="col-xl-4 col-12 row 2">
+            <p class="fs-2 text-white text-uppercase mt-2 mb-0">Links úteis</p>
+            <a class="link-secondary" href="">Home</a>
+            <a class="link-secondary" href="">Livros</a>
+            <a class="link-secondary" href="">Autores</a>
+          </div>
+          <div class="col-xl-4 col-12 row 3">
+            <p class="fs-2 text-white text-uppercase mt-2 mb-1">Redes sociais</p>
+            <i class="col-4 text-white fs-2 fa-brands fa-twitter"></i>
+            <i class="col-4 text-white fs-2 fa-brands fa-instagram"></i>
+            <i class="col-4 text-white fs-2 fa-brands fa-facebook"></i>
+          </div>
+        </div> 
+    </footer>
+</body>
+
+<script src="../../src/app.js"></script>
+</html>
