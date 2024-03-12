@@ -15,6 +15,8 @@ const getImageUrl = (elemId) => {
             reader.onerror = (error) => {
                 reject(error)
             }
+        } else {
+            resolve()
         }
     })
 }
@@ -262,9 +264,11 @@ const updateBook = (bookForm, event=0, method='GET') => {
                 pageNumber: bookForm.elements.editPageNumber.value,
                 releaseDate: bookForm.elements.editReleaseDate.value,
                 edition: bookForm.elements.editBookEdition.value,
-                cover: imageBase64
+                cover: imageBase64 || bookData.cover
             }
     
+            console.log(newBookObject)
+
             localStorage.setItem('bookArray', JSON.stringify(bookArray.map((book) => {
                 if (book.id == bookId) {
                     return newBookObject
@@ -404,7 +408,7 @@ const updateAuthor = (authorForm, event=0, method='GET') => {
                 description: authorForm.elements.editAuthorDescription.value,
                 country: authorForm.elements.EditAuthorCountry.value,
                 birthDate: authorForm.elements.EditAuthorBirth.value,
-                picture: imageBase64
+                picture: imageBase64 || authorData.picture
             }
     
             localStorage.setItem('authorArray', JSON.stringify(authorArray.map((author) => {
