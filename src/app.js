@@ -429,6 +429,7 @@ const deleteAuthor = (authorId) => {
 const pagination = (model, event=0) => {
     const setPageButtons = (pageButtons, page, maxPage) => {
         const pagesToRedirect = []
+
         if (!page || page === 1){
             pageButtons.forEach((elem, index) => {
                 elem.textContent = index + 1
@@ -436,6 +437,9 @@ const pagination = (model, event=0) => {
                 if (index === 0){
                     elem.classList.add('disabled')
                     document.getElementById('page-buttons-previous').classList.add('disabled')
+                }
+                if (maxPage === 1){
+                    document.getElementById('page-buttons-next').classList.add('disabled')
                 }
             })
         } else {
@@ -451,8 +455,9 @@ const pagination = (model, event=0) => {
                 } else {
                     elem.textContent = page - 1 + index
                     pagesToRedirect.push(elem.textContent)
-                    if (index === 1){
+                    if (index === page - 1){
                         elem.classList.add('disabled')
+                        document.getElementById('page-buttons-next').classList.add('disabled')
                     }
                 }
             })
@@ -465,15 +470,17 @@ const pagination = (model, event=0) => {
 
     if (event?.target?.id === 'pagination' && event?.target?.value.length < 6) {
         localStorage.setItem('perPage', event.target.value)
+        window.location.href = `list${model === 'author' ? 'Author' : 'Book'}.html`
     }
     
     let modelArray = ''
-
+    
     if (model === 'author'){
         modelArray = getOrSetAuthorArray()
     } else {
         modelArray = getOrSetBookArray()
     }
+
 
     const maxPage = Math.ceil(modelArray.length  / (parseInt(localStorage.getItem('perPage')) || 4)) 
     
