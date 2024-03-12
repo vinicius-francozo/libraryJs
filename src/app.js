@@ -130,26 +130,33 @@ const incrementId = (model) => {
     return id
 }
 
-const createBook = (bookForm) => {
+const createBook = (bookForm, method='GET') => {
     const correctId = incrementId('book')
     const bookArray = getOrSetBookArray()
+    const authorArray = getOrSetAuthorArray()
+    const selectAuthorElem = document.getElementById('bookAuthor')
 
-    getImageUrl('cover').then((imageBase64) => {
-        const bookObject = {
-            id: correctId,
-            title: bookForm.elements.bookTitle.value,
-            author: bookForm.elements.bookAuthor.value,
-            publisher: bookForm.elements.bookPublisher.value,
-            sinopsis: bookForm.elements.bookSinopsis.value,
-            pageNumber: bookForm.elements.pageNumber.value,
-            releaseDate: bookForm.elements.releaseDate.value,
-            edition: bookForm.elements.bookEdition.value,
-            cover: imageBase64
+    if (method === 'POST'){
+        getImageUrl('cover').then((imageBase64) => {
+            const bookObject = {
+                id: correctId,
+                title: bookForm.elements.bookTitle.value,
+                author: bookForm.elements.bookAuthor.value,
+                publisher: bookForm.elements.bookPublisher.value,
+                sinopsis: bookForm.elements.bookSinopsis.value,
+                pageNumber: bookForm.elements.pageNumber.value,
+                releaseDate: bookForm.elements.releaseDate.value,
+                edition: bookForm.elements.bookEdition.value,
+                cover: imageBase64
+            }
+            bookArray.push(bookObject)
+            localStorage.setItem('bookArray', JSON.stringify(bookArray))
+        }).catch((err) => {alert(err)})
+    } else {
+        for (author of authorArray) {
+            selectAuthorElem.insertAdjacentHTML('beforeend', `<option value="${author.name} ${author.surname}">${author.name} ${author.surname}</option>`)
         }
-        bookArray.push(bookObject)
-        localStorage.setItem('bookArray', JSON.stringify(bookArray))
-    }).catch((err) => {alert(err)})
-    
+    }
 }
 
 const populateBookPage = (pagesToRedirect, itemsPerPage=4, page=1) => {
@@ -228,6 +235,7 @@ const updateBook = (bookForm, event=0, method='GET') => {
     const urlParams = new URLSearchParams(window.location.search)
     const bookId = urlParams.get('id')
     const bookArray = getOrSetBookArray()
+    const authorArray = getOrSetAuthorArray()
     const bookData = bookArray.filter(book => book.id == bookId)[0]
 
     const elemObject = {
@@ -243,12 +251,15 @@ const updateBook = (bookForm, event=0, method='GET') => {
     if (method === 'GET'){
         if (bookData){ 
             elemObject.title.value = bookData.title    
-            elemObject.author.value = bookData.author    
             elemObject.publisher.value = bookData.publisher    
             elemObject.sinopsis.value = bookData.sinopsis    
             elemObject.pageNumber.value = bookData.pageNumber    
             elemObject.releaseDate.value = bookData.releaseDate    
             elemObject.edition.value = bookData.edition  
+            
+            for(author of authorArray) {
+                elemObject.author.insertAdjacentHTML('beforeend', `<option ${author.name + author.surname == bookData.author.replace(/ /g, '') ? 'selected' : ''} value="${author.name} ${author.surname}">${author.name} ${author.surname}</option>`)
+            }
         } else {
             window.location.href = 'listBook.html'
             alert('livro não encontrado')
@@ -517,7 +528,8 @@ function init(page) {
           break
         case 'Cadastrar Livro':
             const createBookForm = document.getElementById('create-book-form')
-            createBookForm.addEventListener('submit', () => {createBook(createBookForm)})
+            createBook(createBookForm)
+            createBookForm.addEventListener('submit', () => {createBook(createBookForm, 'POST')})
             break
         case 'Editar Autor':
             const updateAuthorForm = document.getElementById('edit-author-form')
